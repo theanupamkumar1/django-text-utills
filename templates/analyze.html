@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Same Navigation as index.html -->
+    <nav
+      class="bg-white border-gray-200 dark:bg-gray-900 fixed w-full z-20 top-0 start-0"
+    >
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      >
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <span
+            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+            >Text Analyzer</span
+          >
+        </a>
+        <button
+          data-collapse-toggle="navbar-default"
+          type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          >
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-4 pt-20">
+      <div
+        class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl fade-in"
+      >
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
+          Analysis Results
+        </h1>
+
+        <div class="space-y-6">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h2 class="text-lg font-semibold text-gray-700">Original Text:</h2>
+            <p class="mt-2 text-gray-600">{{original_text}}</p>
+          </div>
+
+          {% if capitalize %}
+          <div
+            class="p-4 bg-blue-50 rounded-lg fade-in"
+            style="animation-delay: 0.2s"
+          >
+            <h2 class="text-lg font-semibold text-blue-700">Capitalized:</h2>
+            <p class="mt-2 text-blue-600">{{capitalize}}</p>
+          </div>
+          {% endif %} {% if smallcase %}
+          <div
+            class="p-4 bg-green-50 rounded-lg fade-in"
+            style="animation-delay: 0.4s"
+          >
+            <h2 class="text-lg font-semibold text-green-700">Lowercase:</h2>
+            <p class="mt-2 text-green-600">{{smallcase}}</p>
+          </div>
+          {% endif %} {% if length %}
+          <div
+            class="p-4 bg-yellow-50 rounded-lg fade-in"
+            style="animation-delay: 0.6s"
+          >
+            <h2 class="text-lg font-semibold text-yellow-700">Length:</h2>
+            <p class="mt-2 text-yellow-600">{{length}}</p>
+          </div>
+          {% endif %} {% if style %}
+          <div
+            class="p-4 bg-purple-50 rounded-lg fade-in"
+            style="animation-delay: 0.8s"
+          >
+            <h2 class="text-lg font-semibold text-purple-700">Styled:</h2>
+            <p class="mt-2 text-purple-600">{{style|safe}}</p>
+          </div>
+          {% endif %} {% if removespaces %}
+          <div
+            class="p-4 bg-red-50 rounded-lg fade-in"
+            style="animation-delay: 1s"
+          >
+            <h2 class="text-lg font-semibold text-red-700">Removed Spaces:</h2>
+            <p class="mt-2 text-red-600">{{removespaces}}</p>
+          </div>
+          {% endif %} {% if rmpunct %}
+          <div
+            class="p-4 bg-indigo-50 rounded-lg fade-in"
+            style="animation-delay: 1.2s"
+          >
+            <h2 class="text-lg font-semibold text-indigo-700">
+              Removed Punctuation:
+            </h2>
+            <p class="mt-2 text-indigo-600">{{rmpunct}}</p>
+          </div>
+          {% endif %}
+
+          <a
+            href="/"
+            class="inline-block mt-8 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            ← Back to Analyzer
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Same Footer as index.html -->
+    <footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4 mt-8">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <a
+            href="/"
+            class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+          >
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+              >Text Analyzer</span
+            >
+          </a>
+          <ul
+            class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
+          >
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">About</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <hr
+          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+        />
+        <span
+          class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"
+          >© 2024 Text Analyzer™. All Rights Reserved.</span
+        >
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>

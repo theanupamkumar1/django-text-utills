@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Text Analyzer</title>
+  </head>
+  <body>
+    <h1>Welcome to Text Analyzer</h1>
+    <form action="/analyze" method="get">
+      <textarea name="ip_text" cols="30" rows="10"></textarea><br />
+      <input type="checkbox" name="capitalize" value="on" /> Capitalize<br />
+      <input type="checkbox" name="smallcase" value="on" /> Small Case<br />
+      <input type="checkbox" name="length" value="on" /> Length<br />
+      <input type="checkbox" name="style" value="on" /> Style<br />
+      <input type="checkbox" name="removespaces" value="on" /> Remove Spaces<br />
+      <input type="checkbox" name="rmpunct" value="on" /> Remove Punctuation<br />
+      <button type="submit">Analyze</button>
+    </form>
+  </body>
+</html>
